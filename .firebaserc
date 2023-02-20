@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "epics-dao"
+  },
+  "targets": {
+    "epics-dao": {
+      "hosting": {
+        "media-ssg-boilerplate": [
+          "media-ssg-boilerplate"
+        ]
+      }
+    }
+  }
+}

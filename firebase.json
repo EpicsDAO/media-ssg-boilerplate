@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "target": "media-ssg-boilerplate",
+    "public": "out",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}

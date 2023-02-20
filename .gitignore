@@ -34,3 +34,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Gcloud key
+gcloud-key.json
+
+# env
+.env
+
+#firebase
+.firebase
+firebase-debug.log
