@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       <RecoilRoot>
         <ThemeProvider attribute="class">
           <main
-            className={`${fredoka.variable} min-h-screen scroll-smooth font-sans antialiased`}
+            className={`${fredoka.variable} ${fredoka.className} min-h-screen scroll-smooth font-sans antialiased`}
           >
             <Layout
               Component={Component}
