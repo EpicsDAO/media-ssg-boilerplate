@@ -10,11 +10,13 @@ export default function AppLoading() {
           src={DotsBounce}
           alt="Loading..."
           className="h-6 w-auto dark:hidden sm:h-10"
+          unoptimized
         />
         <Image
           src={DotsBounceWhite}
           alt="Loading..."
           className="hidden h-6 w-auto dark:block sm:h-10"
+          unoptimized
         />
       </div>
     </>

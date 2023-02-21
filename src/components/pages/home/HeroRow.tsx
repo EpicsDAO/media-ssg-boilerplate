@@ -106,6 +106,7 @@ export default function HomeHeroRow() {
                           )}
                           width={168}
                           height={48}
+                          unoptimized
                         />
                       </a>
                     </li>

@@ -21,11 +21,13 @@ export default function LogoHorizontalLinkToHome({
           src={logoHorizontal}
           alt="Epics DAO"
           className={clsx('dark:hidden ', className)}
+          unoptimized
         />
         <Image
           src={logoHorizontalWhite}
           alt="Epics DAO"
           className={clsx('hidden dark:block', className)}
+          unoptimized
         />
       </Link>
     </>
