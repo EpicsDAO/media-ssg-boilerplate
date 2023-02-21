@@ -27,7 +27,7 @@
 ```bash
 # Node version (using nodenv)
 $ node -v
-v18.14.0
+v18.14.1
 
 # Install dependencies
 $ yarn install --frozen-lockfile
