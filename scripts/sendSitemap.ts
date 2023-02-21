@@ -2,10 +2,11 @@ import dotenv from 'dotenv'
 dotenv.config()
 import { readFileSync } from 'fs'
 import { XMLParser } from 'fast-xml-parser'
-const parser = new XMLParser()
 import fetch from 'node-fetch'
+import siteConfig from '../src/config/site'
 
-const { domain } = require('../src/config/site')
+const parser = new XMLParser()
+const { domain } = siteConfig
 
 const main = async () => {
   try {
@@ -24,6 +25,7 @@ const main = async () => {
       }
     )
     console.log(googlePing)
+    //@ts-ignore
     const urlList = sitemapJSON.urlset.url.map((item) => item.loc)
     const [siteUrl] = urlList
     const body = { siteUrl, urlList }
@@ -37,14 +39,16 @@ const main = async () => {
     )
     console.log(response)
   } catch (error) {
-    if (error.message.includes('No api key')) {
-      console.error('Please set Bing API key in .env')
-    } else if (error.message.includes('ENOENT: no such file or directory')) {
-      console.error(
-        'There is no sitemap.xml. please run `yarn build` to make sitemap on your local '
-      )
-    } else {
-      console.log(error)
+    if (error instanceof Error) {
+      if (error.message.includes('No api key')) {
+        console.error('Please set Bing API key in .env')
+      } else if (error.message.includes('ENOENT: no such file or directory')) {
+        console.error(
+          'There is no sitemap.xml. please run `yarn build` to make sitemap on your local '
+        )
+      } else {
+        console.error(error)
+      }
     }
   }
 }

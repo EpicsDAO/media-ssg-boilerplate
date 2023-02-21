@@ -6,7 +6,7 @@ import { useTranslation } from 'next-i18next'
 import { useRecoilState } from 'recoil'
 import { policyAgreedState } from '@/stores/policy'
 
-import firebaseConfig from '@/config/firebase.mjs'
+import firebaseConfig from '@/config/firebase'
 import Link from '@/components/routing/Link'
 import { Button } from '@/components/common/atoms/Button'
 

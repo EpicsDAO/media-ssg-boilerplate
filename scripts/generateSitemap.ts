@@ -1,6 +1,8 @@
-const fs = require('fs')
-const globby = require('globby')
-const { domain } = require('../src/config/site')
+import fs from 'fs'
+import globby from 'globby'
+import siteConfig from '../src/config/site'
+
+const { domain } = siteConfig
 const distDir = 'out'
 
 async function generateSiteMap() {

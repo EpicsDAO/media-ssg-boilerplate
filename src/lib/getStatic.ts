@@ -1,7 +1,7 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import i18nextConfig from '../../next-i18next.config'
 import { GetStaticPropsContext } from 'next'
-import siteConfig from '@/config/site.mjs'
+import siteConfig from '@/config/site'
 
 type Seo = {
   pathname: string

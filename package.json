@@ -10,13 +10,18 @@
     "pre-commit:typecheck": "tsc --noEmit",
     "dev": "next dev -p 4200",
     "build": "next build && next export",
-    "postbuild": "node ./scripts/generateSitemap.js",
+    "postbuild": "npx ts-node ./scripts/generateSitemap.ts",
+    "deploy": "yarn build && npx firebase deploy",
     "start": "next start",
     "lint": "next lint",
     "update:packages": "ncu -u && yarn",
-    "send:sitemap": "node ./scripts/sendSitemap.mjs"
+    "send:sitemap": "npx ts-node ./scripts/sendSitemap.ts"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "6.3.0",
+    "@fortawesome/free-brands-svg-icons": "6.3.0",
+    "@fortawesome/free-regular-svg-icons": "6.3.0",
+    "@fortawesome/react-fontawesome": "0.2.0",
     "@headlessui/react": "1.7.11",
     "@heroicons/react": "2.0.16",
     "@next/font": "13.1.6",
@@ -35,11 +40,7 @@
     "react-dom": "18.2.0",
     "react-i18next": "12.1.5",
     "recoil": "0.7.6",
-    "recoil-persist": "4.2.0",
-    "@fortawesome/react-fontawesome": "0.2.0",
-    "@fortawesome/free-brands-svg-icons": "6.3.0",
-    "@fortawesome/fontawesome-svg-core": "6.3.0",
-    "@fortawesome/free-regular-svg-icons": "6.3.0"
+    "recoil-persist": "4.2.0"
   },
   "devDependencies": {
     "@tailwindcss/line-clamp": "0.4.2",
@@ -51,6 +52,7 @@
     "@types/react-dom": "18.0.11",
     "autoprefixer": "10.4.13",
     "cssnano": "5.1.15",
+    "dotenv": "16.0.3",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
     "eslint-config-prettier": "8.6.0",

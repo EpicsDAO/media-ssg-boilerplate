@@ -6,7 +6,7 @@ import LanguageChanger from '@/components/utils/LanguageChanger'
 import ColorModeChanger from '@/components/utils/ColorModeChanger'
 import Link from '@/components/routing/Link'
 import LogoHorizontalLinkToHome from '@/components/common/atoms/LogoHorizontalLinkToHome'
-import { defaultMainNav } from '@/config/navs.mjs'
+import { defaultMainNav } from '@/config/navs'
 
 export default function DefaultHeader() {
   const { t } = useTranslation()
