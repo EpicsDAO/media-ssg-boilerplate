@@ -4,6 +4,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   reactStrictMode: true,
+  images: { unoptimized: true },
 }
 
 const intercept = require('intercept-stdout')
