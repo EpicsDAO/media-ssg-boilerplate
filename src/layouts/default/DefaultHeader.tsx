@@ -32,14 +32,14 @@ export default function DefaultHeader() {
 
   return (
     <>
-      <header>
-        <Popover
-          className={
-            isScrollingUp
-              ? 'sticky bg-yellow-100 dark:bg-gray-900'
-              : 'relative bg-yellow-50 dark:bg-gray-800'
-          }
-        >
+      <header
+        className={
+          isScrollingUp
+            ? 'fixed top-0 w-full bg-yellow-50 bg-opacity-90 dark:bg-gray-800'
+            : 'relative w-full bg-yellow-50 dark:bg-gray-800'
+        }
+      >
+        <Popover>
           {({ close }) => (
             <>
               <div className="flex items-center justify-between p-6 md:justify-start md:space-x-10">

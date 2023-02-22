@@ -22,7 +22,7 @@ export default function DefaultLayout({ children }: Props) {
 
   return (
     <>
-      <div className="h-full w-full bg-yellow-50 dark:bg-gray-800">
+      <div className="relative h-full w-full bg-yellow-50 dark:bg-gray-800">
         <DefaultHeader />
         <div id="page-component" className="min-h-screen">
           {children}
