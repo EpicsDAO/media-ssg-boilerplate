@@ -32,14 +32,23 @@ export default function DefaultHeader() {
 
   return (
     <>
+      {isScrollingUp && (
+        <div className="h-24 bg-yellow-50 bg-opacity-90 dark:bg-gray-800 dark:bg-opacity-90" />
+      )}
       <header
         className={
           isScrollingUp
-            ? 'fixed top-0 w-full bg-yellow-50 bg-opacity-90 dark:bg-gray-800'
-            : 'relative w-full bg-yellow-50 dark:bg-gray-800'
+            ? 'fixed top-0 h-24 w-full bg-yellow-50 bg-opacity-90 dark:bg-gray-800 dark:bg-opacity-90'
+            : 'relative h-24 w-full bg-yellow-50 dark:bg-gray-800'
         }
       >
-        <Popover>
+        <Popover
+          className={
+            isScrollingUp
+              ? 'fixed top-0 h-24 w-full bg-yellow-50 bg-opacity-90 dark:bg-gray-800 dark:bg-opacity-90'
+              : 'relative h-24 w-full bg-yellow-50 dark:bg-gray-800'
+          }
+        >
           {({ close }) => (
             <>
               <div className="flex items-center justify-between p-6 md:justify-start md:space-x-10">

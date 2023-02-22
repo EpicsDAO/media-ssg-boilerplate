@@ -13,10 +13,9 @@ const OFFSET_ACTIVE_ITEM = 128
 
 type Props = {
   rawMarkdownBody: string
-  handleClose: () => void
 }
 
-export default function ScrollSyncToc({ rawMarkdownBody, handleClose }: Props) {
+export default function ScrollSyncToc({ rawMarkdownBody }: Props) {
   const [activeItemIds, setActiveItemIds] = useState([])
   const [itemTopOffsets, setItemTopOffsets] = useState([])
   const [toc, setToc] = useState([])
@@ -64,7 +63,13 @@ export default function ScrollSyncToc({ rawMarkdownBody, handleClose }: Props) {
     }
   }, [handleScroll])
 
-  return <>Scroll Sync Toc</>
+  return (
+    <>
+      <div className="sticky top-32">
+        <Toc toc={toc} activeItemIds={activeItemIds} />
+      </div>
+    </>
+  )
 }
 
 function _getToc(rawMarkdownBody: string) {
