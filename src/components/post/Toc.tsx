@@ -11,6 +11,7 @@ type Props = {
 
 export default function Toc({ toc, activeItemIds }: Props) {
   const { t } = useTranslation()
+  console.log(activeItemIds)
   return (
     <>
       <div className="p-4">
@@ -24,7 +25,7 @@ export default function Toc({ toc, activeItemIds }: Props) {
               href={`#${item.id}`}
               className={clsx(
                 activeItemIds.includes(item.id)
-                  ? 'bg-gray-100 text-gray-900'
+                  ? 'bg-yellow-100 text-gray-900 dark:bg-gray-900 dark:text-gray-50'
                   : 'text-gray-600 hover:bg-yellow-100 hover:text-gray-900 dark:text-gray-200 dark:hover:bg-gray-900 dark:hover:text-gray-50',
                 'flex items-center rounded-md px-3 py-2 text-sm font-medium'
               )}

@@ -1,8 +1,5 @@
-import { useRouter } from 'next/router'
 import 'highlight.js/styles/github-dark.css'
-
 import ScrollSyncToc from '@/components/post/ScrollSyncToc'
-import { useTranslation } from 'next-i18next'
 import Container from '@/components/common/atoms/Container'
 
 type Props = {
@@ -16,10 +13,6 @@ type Props = {
 }
 
 export default function Contents({ post, postHtml }: Props) {
-  const router = useRouter()
-
-  const { t } = useTranslation()
-
   return (
     <>
       <Container>

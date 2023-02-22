@@ -31,9 +31,11 @@ export default function ScrollSyncToc({ rawMarkdownBody }: Props) {
   const handleScroll = useCallback(() => {
     const item = itemTopOffsets.find((current, i) => {
       const next = itemTopOffsets[i + 1]
-      const currentPosition =
-        document.querySelector('#page-component').scrollTop
+      const currentPosition = window.scrollY
       const judgePosition = currentPosition + OFFSET_ACTIVE_ITEM
+      console.log({ current })
+      console.log({ currentPosition })
+      console.log({ judgePosition })
 
       return next
         ? judgePosition >= current.offsetTop && judgePosition < next.offsetTop
@@ -51,15 +53,9 @@ export default function ScrollSyncToc({ rawMarkdownBody }: Props) {
 
   useEffect(() => {
     const throttledHandleScroll = throttle(handleScroll, 100)
-    const pageComponent = document.querySelector('#page-component')
-    if (pageComponent) {
-      pageComponent.addEventListener('scroll', throttledHandleScroll)
-    }
-
+    window.addEventListener('scroll', throttledHandleScroll)
     return () => {
-      if (pageComponent) {
-        pageComponent.removeEventListener(`scroll`, throttledHandleScroll)
-      }
+      window.removeEventListener('scroll', throttledHandleScroll)
     }
   }, [handleScroll])
 

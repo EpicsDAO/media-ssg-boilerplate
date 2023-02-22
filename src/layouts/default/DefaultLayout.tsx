@@ -14,8 +14,7 @@ export default function DefaultLayout({ children }: Props) {
   const router = useRouter()
 
   useEffect(() => {
-    const pageComponent = document.getElementById('page-component')
-    if (pageComponent != null && !router.asPath.includes('#')) {
+    if (!router.asPath.includes('#')) {
       resetWindowScrollPosition()
     }
   }, [router.asPath, resetWindowScrollPosition])
@@ -24,9 +23,7 @@ export default function DefaultLayout({ children }: Props) {
     <>
       <div className="relative h-full w-full bg-yellow-50 dark:bg-gray-800">
         <DefaultHeader />
-        <div id="page-component" className="min-h-screen">
-          {children}
-        </div>
+        <div className="min-h-screen">{children}</div>
         <CommonFooter />
       </div>
     </>
