@@ -32,7 +32,7 @@ export default function Layout({ Component, pageProps }: AppPropsWithLayout) {
         </>
       ) : (
         <>
-          <div className="relative min-h-screen">
+          <div className="relative">
             <Suspense fallback={<AppLoading />}>
               {getLayout(<Component {...pageProps} />)}
             </Suspense>
