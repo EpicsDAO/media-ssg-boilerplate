@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import Link from 'next/link'
+import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
 type Props = {
@@ -11,11 +11,7 @@ type Props = {
   onClick?: () => void
 }
 
-export default function LinkComponent({
-  children,
-  skipLocaleHandling,
-  ...rest
-}: Props) {
+export default function Link({ children, skipLocaleHandling, ...rest }: Props) {
   const router = useRouter()
   const locale = rest.locale || router.query.locale || ''
 
@@ -29,9 +25,9 @@ export default function LinkComponent({
 
   return (
     <>
-      <Link href={href}>
+      <NextLink href={href}>
         <span {...rest}>{children}</span>
-      </Link>
+      </NextLink>
     </>
   )
 }

@@ -33,10 +33,6 @@ export default function ScrollSyncToc({ rawMarkdownBody }: Props) {
       const next = itemTopOffsets[i + 1]
       const currentPosition = window.scrollY
       const judgePosition = currentPosition + OFFSET_ACTIVE_ITEM
-      console.log({ current })
-      console.log({ currentPosition })
-      console.log({ judgePosition })
-
       return next
         ? judgePosition >= current.offsetTop && judgePosition < next.offsetTop
         : judgePosition >= current.offsetTop
