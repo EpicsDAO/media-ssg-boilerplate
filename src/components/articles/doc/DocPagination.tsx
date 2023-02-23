@@ -1,6 +1,5 @@
 import { useTranslation } from 'next-i18next'
 import Link from '@/components/routing/Link'
-import type { DocIndex } from '@/types/article'
 import { useMemo } from 'react'
 import { docMenuNav } from '@/config/navs'
 import { useRouter } from 'next/router'
@@ -18,10 +17,11 @@ export default function DocPagination({}: Props) {
     return router.asPath.replace('/ja/', '/').replace('/en/', '/')
   }, [router.asPath])
   const pageInfo = useMemo(() => {
-    const pages = docMenuNav.flat()
+    const pages = docMenuNav
     const currentPageNum = pages.findIndex(
       (item) => asPathWithoutLang === item.href
     )
+    console.log(currentPageNum)
     return {
       previousPage: pages[currentPageNum - 1],
       nextPage: pages[currentPageNum + 1],
