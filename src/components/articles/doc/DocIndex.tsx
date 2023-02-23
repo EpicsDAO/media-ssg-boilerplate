@@ -1,7 +1,31 @@
 import { useTranslation } from 'next-i18next'
-import Image from 'next/image'
 import Link from '@/components/routing/Link'
 import type { DocIndex } from '@/types/article'
+import {
+  HeartIcon,
+  RocketLaunchIcon,
+  ArrowUpRightIcon,
+} from '@heroicons/react/24/outline'
+import clsx from 'clsx'
+
+const actions = [
+  {
+    title: 'doc:motivationTitle',
+    body: 'doc:motivationBody',
+    href: '/doc/motivation',
+    icon: HeartIcon,
+    iconForeground: 'text-pink-700',
+    iconBackground: 'bg-pink-50',
+  },
+  {
+    title: 'doc:quickstartTitle',
+    body: 'doc:quickstartBody',
+    href: '/doc/quickstart',
+    icon: RocketLaunchIcon,
+    iconForeground: 'text-blue-700',
+    iconBackground: 'bg-blue-50',
+  },
+]
 
 type Props = {}
 
@@ -10,7 +34,7 @@ export default function DocIndex({}: Props) {
 
   return (
     <>
-      <div className="py-24 sm:py-32">
+      <div className="py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl">
@@ -19,6 +43,55 @@ export default function DocIndex({}: Props) {
             <p className="mt-2 text-lg leading-8 text-gray-600 dark:text-gray-300">
               {t('doc:body')}
             </p>
+          </div>
+        </div>
+        <div className="py-12">
+          <div className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
+            {actions.map((action, actionIdx) => (
+              <div
+                key={action.title}
+                className={clsx(
+                  actionIdx === 0
+                    ? 'rounded-tl-lg rounded-tr-lg sm:rounded-tr-none'
+                    : '',
+                  actionIdx === 1 ? 'sm:rounded-tr-lg' : '',
+                  actionIdx === actions.length - 2 ? 'sm:rounded-bl-lg' : '',
+                  actionIdx === actions.length - 1
+                    ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none'
+                    : '',
+                  'group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500 hover:bg-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700'
+                )}
+              >
+                <div>
+                  <span
+                    className={clsx(
+                      action.iconBackground,
+                      action.iconForeground,
+                      'inline-flex rounded-lg p-3 ring-4 ring-white'
+                    )}
+                  >
+                    <action.icon className="h-6 w-6" aria-hidden="true" />
+                  </span>
+                </div>
+                <div className="mt-8">
+                  <h3 className="text-lg font-medium">
+                    <Link href={action.href} className="focus:outline-none">
+                      <span className="absolute inset-0" aria-hidden="true" />
+                      {t(action.title)}
+                    </Link>
+                  </h3>
+                  <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                    {t(action.body)}
+                  </p>
+                </div>
+                <span
+                  className="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400"
+                  aria-hidden="true"
+                >
+                  <ArrowUpRightIcon className="h-6 w-6" />
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
