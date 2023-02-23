@@ -1,5 +1,7 @@
 # Media SSG Boilerplate
 
+![Media SSG Boilerplate](https://user-images.githubusercontent.com/20677823/221048865-464e2d08-fd7c-4e64-a590-ba7d21b77173.png)
+
 ## Aiming to
 
 - Fast Development
