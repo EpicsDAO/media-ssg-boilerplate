@@ -5,6 +5,8 @@
   "quickstartTitle": "Quickstart",
   "quickstartBody": "Media SSG Boilerplate Quickstart",
   "body": "You can start creating documents compatible with syntax highlights immediately",
+  "previousPage": "Previous page",
+  "nextPage": "Next page",
   "menuNav": {
     "home": "Doc Home",
     "motivation": "Motivation",

@@ -5,6 +5,8 @@
   "quickstartTitle": "クイックスタート",
   "quickstartBody": "Media SSG Boilerplate クイックスタート",
   "body": "シンタックスハイライト対応のドキュメント作成をすぐにスタートできます",
+  "previousPage": "前のページ",
+  "nextPage": "次のページ",
   "menuNav": {
     "home": "ドキュメントホーム",
     "motivation": "モチベーション",

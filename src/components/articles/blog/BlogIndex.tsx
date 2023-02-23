@@ -54,10 +54,8 @@ export default function BlogIndex({ articles, urls }: Props) {
                     </div>
                     <div className="relative">
                       <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600 dark:text-gray-50 dark:group-hover:text-gray-300">
-                        <a href={urls[index]}>
-                          <span className="absolute inset-0" />
-                          {article.title}
-                        </a>
+                        <span className="absolute inset-0" />
+                        {article.title}
                       </h3>
                     </div>
                   </div>

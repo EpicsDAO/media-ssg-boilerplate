@@ -30,7 +30,6 @@ export default function Doc({
   return (
     <>
       <DocContents article={article} articleHtml={articleHtml} />
-      <DocPagination />
     </>
   )
 }

@@ -1,6 +1,7 @@
 import Container from '@/components/common/atoms/Container'
 import ScrollSyncToc from '@/components/articles/ScrollSyncToc'
 import type { DocContent } from '@/types/article'
+import DocPagination from './DocPagination'
 
 type Props = {
   article: DocContent
@@ -20,6 +21,9 @@ export default function DocContents({ article, articleHtml }: Props) {
             </div>
             <div className="prose py-8 dark:prose-invert lg:prose-lg">
               <div dangerouslySetInnerHTML={{ __html: articleHtml }} />
+            </div>
+            <div className="py-16">
+              <DocPagination />
             </div>
           </div>
           <div className="relative hidden pt-24 lg:block">
