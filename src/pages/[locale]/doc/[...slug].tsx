@@ -19,7 +19,6 @@ import { getAllArticles, getArticleBySlug } from '@/utils/article'
 import DocLayout from '@/layouts/doc/DocLayout'
 import { getI18nProps } from '@/lib/getStatic'
 import DocContents from '@/components/articles/doc/DocContents'
-import DocPagination from '@/components/articles/doc/DocPagination'
 
 const articleDirName = 'doc'
 
