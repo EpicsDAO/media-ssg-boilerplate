@@ -2,16 +2,15 @@ import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import type { ReactElement } from 'react'
 import DefaultLayout from '@/layouts/default/DefaultLayout'
 import { getStaticPaths } from '@/lib/getStatic'
-import 'highlight.js/styles/github-dark.css'
 
-import { getAllPosts, getPostBySlug } from '@/utils/post'
+import { getAllArticles, getArticleBySlug } from '@/utils/article'
 import { getI18nProps } from '@/lib/getStatic'
-import BlogIndex from '@/components/post/BlogIndex'
+import BlogIndex from '@/components/articles/blog/BlogIndex'
 
-const postDirPrefix = 'posts/blog/'
+const articleDirName = 'blog'
 
 const seo = {
-  pathname: '/blog',
+  pathname: `/${articleDirName}`,
   title: {
     ja: 'ブログ',
     en: 'Blog',
@@ -25,11 +24,11 @@ const seo = {
 
 export default function BlogIndexPage({
   urls,
-  posts,
+  articles,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <BlogIndex urls={urls} posts={posts} />
+      <BlogIndex urls={urls} articles={articles} />
     </>
   )
 }
@@ -38,28 +37,34 @@ BlogIndexPage.getLayout = function getLayout(page: ReactElement) {
   return <DefaultLayout>{page}</DefaultLayout>
 }
 
+const articleDirPrefix = `articles/${articleDirName}/`
+
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const slugs = getAllPosts(postDirPrefix).filter((post) => post[0] !== 'ja')
-  const posts = slugs
+  const slugs = getAllArticles(articleDirPrefix).filter(
+    (article) => article[0] !== 'ja'
+  )
+  const articles = slugs
     .map((slug) =>
-      getPostBySlug(
+      getArticleBySlug(
         slug.filter((_, index) => index !== 0),
         ['title', 'category', 'thumbnail', 'date'],
-        postDirPrefix,
+        articleDirPrefix,
         (ctx.params?.locale as string) ?? 'en'
       )
     )
     .reverse()
 
   const urls = slugs
-    .map((slug) => `/blog/${slug[1]}/${slug[2]}/${slug[3]}/${slug[4]}`)
+    .map(
+      (slug) => `/${articleDirName}/${slug[1]}/${slug[2]}/${slug[3]}/${slug[4]}`
+    )
     .reverse()
 
   return {
     props: {
       urls,
-      posts,
-      ...(await getI18nProps(ctx, ['common', 'blog'], seo)),
+      articles,
+      ...(await getI18nProps(ctx, ['common', articleDirName], seo)),
     },
   }
 }

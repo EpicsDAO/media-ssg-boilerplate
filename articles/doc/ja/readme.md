@@ -1,3 +1,9 @@
+---
+id: readme
+title: Readme
+description: Media SSG Boilerplate README
+---
+
 # Media SSG Boilerplate
 
 ## Aiming to

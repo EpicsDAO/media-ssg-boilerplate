@@ -1,0 +1,12 @@
+{
+  "menuNav": {
+    "home": "Doc Home",
+    "motivation": "Motivation",
+    "quickstart": "Quickstart",
+    "readme": "README"
+  },
+  "headerNav": {
+    "home": "Media Home",
+    "blog": "Blog"
+  }
+}

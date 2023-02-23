@@ -1,32 +1,27 @@
-import 'highlight.js/styles/github-dark.css'
 import Container from '@/components/common/atoms/Container'
-import ScrollSyncToc from '@/components/post/ScrollSyncToc'
+import ScrollSyncToc from '@/components/articles/ScrollSyncToc'
 import Image from 'next/image'
+import type { BlogContent } from '@/types/article'
 
 type Props = {
-  post: {
-    title: string
-    asPath: string
-    category: string
-    thumbnail: string
-    date: string
-    content: string
-  }
-  postHtml: string
+  article: BlogContent
+  articleHtml: string
 }
 
-export default function BlogContents({ post, postHtml }: Props) {
+export default function BlogContents({ article, articleHtml }: Props) {
   return (
     <>
       <Container>
         <div className="flex justify-center py-12 lg:gap-12">
           <div>
-            <h1 className="text-4xl font-bold">{post.title}</h1>
-            <p className="mt-1 text-gray-600 dark:text-gray-200">{post.date}</p>
+            <h1 className="text-4xl font-bold">{article.title}</h1>
+            <p className="mt-1 text-gray-600 dark:text-gray-200">
+              {article.date}
+            </p>
             <div className="py-8">
               <Image
-                src={post.thumbnail}
-                alt={post.title}
+                src={article.thumbnail}
+                alt={article.title}
                 width="16"
                 height="9"
                 className="aspect-[16/9] w-full rounded bg-gray-100 object-cover group-hover:opacity-80 sm:aspect-[2/1] lg:aspect-[3/2]"
@@ -34,14 +29,14 @@ export default function BlogContents({ post, postHtml }: Props) {
               />
             </div>
             <div className="py-8 lg:hidden">
-              <ScrollSyncToc rawMarkdownBody={post.content} />
+              <ScrollSyncToc rawMarkdownBody={article.content} />
             </div>
             <div className="prose dark:prose-invert lg:prose-lg">
-              <div dangerouslySetInnerHTML={{ __html: postHtml }} />
+              <div dangerouslySetInnerHTML={{ __html: articleHtml }} />
             </div>
           </div>
           <div className="relative hidden pt-24 lg:block">
-            <ScrollSyncToc rawMarkdownBody={post.content} />
+            <ScrollSyncToc rawMarkdownBody={article.content} />
           </div>
         </div>
       </Container>

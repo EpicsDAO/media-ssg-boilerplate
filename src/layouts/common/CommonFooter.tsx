@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next'
 import Link from '@/components/routing/Link'
 import Container from '@/components/common/atoms/Container'
-import LogoHorizontalLinkToHome from '@/components/common/atoms/LogoHorizontalLinkToHome'
+import LogoHorizontalLink from '@/components/common/atoms/LogoHorizontalLink'
 import siteConfig from '@/config/site'
 import { commonFooterNav } from '@/config/navs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -15,7 +15,7 @@ export default function CommonFooter() {
       <footer className="rounded-t bg-yellow-100 dark:bg-gray-900">
         <Container>
           <div className="py-16">
-            <LogoHorizontalLinkToHome className="mx-auto h-10 w-auto" />
+            <LogoHorizontalLink className="mx-auto h-10 w-auto" />
             <nav className="mt-10 text-sm" aria-label="quick links">
               <div className="flex flex-col justify-center gap-6 text-center sm:-my-1 sm:flex-row">
                 {commonFooterNav.map((nav) => (

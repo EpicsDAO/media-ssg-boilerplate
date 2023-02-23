@@ -14,26 +14,25 @@ import remarkSlug from 'remark-slug'
 import remarkGfm from 'remark-gfm'
 import remarkDirective from 'remark-directive'
 import remarkExternalLinks from 'remark-external-links'
-import 'highlight.js/styles/github-dark.css'
 
-import { getAllPosts, getPostBySlug } from '@/utils/post'
+import { getAllArticles, getArticleBySlug } from '@/utils/article'
 import DefaultLayout from '@/layouts/default/DefaultLayout'
 import { getI18nProps } from '@/lib/getStatic'
-import BlogContents from '@/components/post/BlogContents'
-import BlogPageIndex from '@/components/post/BlogPageIndex'
+import BlogContents from '@/components/articles/blog/BlogContents'
+import BlogPageIndex from '@/components/articles/blog/BlogPageIndex'
 
-const postDirPrefix = 'posts/blog/'
+const articleDirName = 'blog'
 
 export default function Blog({
-  post,
-  postHtml,
+  article,
+  articleHtml,
   urls,
-  posts,
+  articles,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <BlogContents post={post} postHtml={postHtml} />
-      <BlogPageIndex urls={urls} posts={posts} />
+      <BlogContents article={article} articleHtml={articleHtml} />
+      <BlogPageIndex urls={urls} articles={articles} />
     </>
   )
 }
@@ -42,12 +41,14 @@ Blog.getLayout = function getLayout(page: ReactElement) {
   return <DefaultLayout>{page}</DefaultLayout>
 }
 
+const articleDirPrefix = `articles/${articleDirName}/`
+
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { params } = ctx
   if (params?.slug == null)
     return {
       props: {
-        post: {
+        article: {
           title: '',
           category: '',
           thumbnail: '',
@@ -57,14 +58,14 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       },
     }
 
-  const post = getPostBySlug(
+  const article = getArticleBySlug(
     typeof params.slug == 'string' ? [params.slug] : params.slug,
     ['title', 'category', 'thumbnail', 'content', 'date', 'id'],
-    postDirPrefix,
+    articleDirPrefix,
     (params.locale as string) ?? 'en'
   )
 
-  const postHtml = await unified()
+  const articleHtml = await unified()
     .use(remarkParse)
     .use(remarkDirective)
     .use(remarkGfm)
@@ -77,15 +78,17 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     .use(rehypeCodeTitles)
     .use(rehypeHighlight)
     .use(rehypeStringify)
-    .process(post.content as string)
+    .process(article.content as string)
 
-  const slugs = getAllPosts(postDirPrefix).filter((post) => post[0] !== 'ja')
-  const posts = slugs
+  const slugs = getAllArticles(articleDirPrefix).filter(
+    (article) => article[0] !== 'ja'
+  )
+  const articles = slugs
     .map((slug) =>
-      getPostBySlug(
+      getArticleBySlug(
         slug.filter((_, index) => index !== 0),
         ['title', 'category', 'thumbnail', 'date'],
-        postDirPrefix,
+        articleDirPrefix,
         (ctx.params?.locale as string) ?? 'en'
       )
     )
@@ -93,52 +96,54 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     .slice(0, 3)
 
   const urls = slugs
-    .map((slug) => `/blog/${slug[1]}/${slug[2]}/${slug[3]}/${slug[4]}`)
+    .map(
+      (slug) => `/${articleDirName}/${slug[1]}/${slug[2]}/${slug[3]}/${slug[4]}`
+    )
     .reverse()
     .slice(0, 3)
 
   const slug = params.slug as string[]
-  const pathname = `/blog/${slug.join('/')}`
+  const pathname = `/${articleDirName}/${slug.join('/')}`
 
   const seo = {
     pathname,
     title: {
-      ja: post.title as string,
-      en: post.title as string,
+      ja: article.title as string,
+      en: article.title as string,
     },
     description: {
-      ja: `${post.content.slice(0, 120)} ...`,
-      en: `${post.content.slice(0, 120)} ...`,
+      ja: `${article.content.slice(0, 120)} ...`,
+      en: `${article.content.slice(0, 120)} ...`,
     },
-    img: post.thumbnail as string,
+    img: article.thumbnail as string,
   }
 
   return {
     props: {
       urls,
-      posts,
-      post,
-      postHtml: postHtml.value,
-      ...(await getI18nProps(ctx, ['common', 'blog'], seo)),
+      articles,
+      article,
+      articleHtml: articleHtml.value,
+      ...(await getI18nProps(ctx, ['common', articleDirName], seo)),
     },
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = getAllPosts(postDirPrefix)
+  const articles = getAllArticles(articleDirPrefix)
   return {
-    paths: posts.map((post) => {
-      if (post[0] === 'ja') {
+    paths: articles.map((article) => {
+      if (article[0] === 'ja') {
         return {
           params: {
-            slug: post.filter((_, index) => index !== 0),
+            slug: article.filter((_, index) => index !== 0),
             locale: 'ja',
           },
         }
       }
       return {
         params: {
-          slug: post.filter((_, index) => index !== 0),
+          slug: article.filter((_, index) => index !== 0),
           locale: 'en',
         },
       }

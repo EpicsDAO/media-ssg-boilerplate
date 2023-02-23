@@ -3,16 +3,16 @@ import glob from 'glob'
 import { join } from 'path'
 import matter from 'gray-matter'
 
-export const getPostBySlug = (
+export const getArticleBySlug = (
   slugArray: string[],
   fields: string[] = [],
-  postDirPrefix: string,
+  articleDirPrefix: string,
   locale: string
 ) => {
-  const postsDirectory = join(process.cwd(), `${postDirPrefix}/${locale}`)
+  const articlesDirectory = join(process.cwd(), `${articleDirPrefix}/${locale}`)
   const matchedSlug = slugArray.join('/')
   const realSlug = matchedSlug.replace(/\.md$/, '')
-  const fullPath = join(postsDirectory, `${realSlug}.md`)
+  const fullPath = join(articlesDirectory, `${realSlug}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
 
@@ -40,9 +40,9 @@ export const getPostBySlug = (
   return items
 }
 
-export const getAllPosts = (postDirPrefix: string) => {
-  const entries = glob.sync(`${postDirPrefix}/**/*.md`)
+export const getAllArticles = (articleDirPrefix: string) => {
+  const entries = glob.sync(`${articleDirPrefix}/**/*.md`)
   return entries
-    .map((file) => file.split(postDirPrefix).pop())
+    .map((file) => file.split(articleDirPrefix).pop())
     .map((slug) => (slug as string).replace(/\.md$/, '').split('/'))
 }

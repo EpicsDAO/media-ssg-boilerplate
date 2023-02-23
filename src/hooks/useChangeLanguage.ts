@@ -8,7 +8,6 @@ export default function useChangeLanguage() {
   const router = useRouter()
   const changeLanguage = useCallback(
     async (lang: string) => {
-      console.log(lang)
       const oldLang = currentLanguage.slice()
       await i18n.changeLanguage(lang)
       if (router.asPath === '/en' || router.asPath === '/ja') {

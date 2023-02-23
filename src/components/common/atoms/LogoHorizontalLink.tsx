@@ -6,16 +6,18 @@ import clsx from 'clsx'
 
 type Props = {
   className?: string
+  href?: string
   onClick?: () => void
 }
 
-export default function LogoHorizontalLinkToHome({
+export default function LogoHorizontalLink({
   className,
+  href = '/',
   ...rest
 }: Props) {
   return (
     <>
-      <Link href="/" {...rest}>
+      <Link href={href} {...rest}>
         <span className="sr-only">Epics DAO</span>
         <Image
           src={logoHorizontal}

@@ -9,38 +9,40 @@ import remarkParse from 'remark-parse'
 import remark2Rehype from 'remark-rehype'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeStringify from 'rehype-stringify'
+import rehypeCodeTitles from 'rehype-code-titles'
 import remarkSlug from 'remark-slug'
 import remarkGfm from 'remark-gfm'
 import remarkDirective from 'remark-directive'
 import remarkExternalLinks from 'remark-external-links'
 
 import { getAllArticles, getArticleBySlug } from '@/utils/article'
-import DefaultLayout from '@/layouts/default/DefaultLayout'
+import DocLayout from '@/layouts/doc/DocLayout'
 import { getI18nProps } from '@/lib/getStatic'
-import LegalContents from '@/components/articles/legal/LegalContents'
+import DocContents from '@/components/articles/doc/DocContents'
+import DocPagination from '@/components/articles/doc/DocPagination'
 
-const articleDirName = 'legal'
+const articleDirName = 'doc'
 
-export default function Legal({
+export default function Doc({
   article,
   articleHtml,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <LegalContents article={article} articleHtml={articleHtml} />
+      <DocContents article={article} articleHtml={articleHtml} />
+      <DocPagination />
     </>
   )
 }
 
-Legal.getLayout = function getLayout(page: ReactElement) {
-  return <DefaultLayout>{page}</DefaultLayout>
+Doc.getLayout = function getLayout(page: ReactElement) {
+  return <DocLayout>{page}</DocLayout>
 }
 
 const articleDirPrefix = `articles/${articleDirName}/`
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { params } = ctx
-
   if (params?.slug == null)
     return {
       props: {
@@ -54,7 +56,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   const article = getArticleBySlug(
     typeof params.slug == 'string' ? [params.slug] : params.slug,
-    ['title', 'description', 'content', 'id'],
+    ['title', 'description', 'content'],
     articleDirPrefix,
     (params.locale as string) ?? 'en'
   )
@@ -69,19 +71,23 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       rel: ['noopener noreferrer'],
     })
     .use(remark2Rehype)
+    .use(rehypeCodeTitles)
     .use(rehypeHighlight)
     .use(rehypeStringify)
     .process(article.content as string)
 
+  const slug = params.slug as string[]
+  const pathname = `/${articleDirName}/${slug.join('/')}`
+
   const seo = {
-    pathname: `/${articleDirName}/${article.id}`,
+    pathname,
     title: {
       ja: article.title as string,
       en: article.title as string,
     },
     description: {
-      ja: article.description as string,
-      en: article.description as string,
+      ja: `${article.description}`,
+      en: `${article.description}`,
     },
     img: null,
   }

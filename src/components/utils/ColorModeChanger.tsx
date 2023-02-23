@@ -10,7 +10,7 @@ export default function ColorModeChanger() {
         onClick={() => {
           resolvedTheme === 'light' ? setTheme('dark') : setTheme('light')
         }}
-        className="group inline-flex items-center rounded p-1 text-base font-medium text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 dark:text-gray-50"
+        className="group inline-flex items-center rounded p-1 text-base font-medium text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:text-gray-50"
       >
         <MoonIcon
           className="h-5 w-5 text-gray-700 hover:text-gray-900 dark:hidden"

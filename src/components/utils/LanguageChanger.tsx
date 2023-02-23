@@ -10,11 +10,11 @@ export default function LanguageChanger() {
 
   return (
     <>
-      <Menu as="div" className="relative">
+      <Menu as="div">
         <Menu.Button
           className={clsx(
             'text-gray-700 dark:text-gray-50',
-            'group inline-flex items-center rounded p-1 text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2'
+            'group inline-flex items-center rounded p-1 text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2'
           )}
         >
           <LanguageIcon

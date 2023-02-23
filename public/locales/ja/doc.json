@@ -1,0 +1,12 @@
+{
+  "menuNav": {
+    "home": "ドキュメントホーム",
+    "motivation": "モチベーション",
+    "quickstart": "クイックスタート",
+    "readme": "README"
+  },
+  "headerNav": {
+    "home": "ホームページ",
+    "blog": "ブログ"
+  }
+}

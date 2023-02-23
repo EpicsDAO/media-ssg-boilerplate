@@ -5,7 +5,7 @@ import { useTranslation } from 'next-i18next'
 import LanguageChanger from '@/components/utils/LanguageChanger'
 import ColorModeChanger from '@/components/utils/ColorModeChanger'
 import Link from '@/components/routing/Link'
-import LogoHorizontalLinkToHome from '@/components/common/atoms/LogoHorizontalLinkToHome'
+import LogoHorizontalLink from '@/components/common/atoms/LogoHorizontalLink'
 import { defaultMainNav } from '@/config/navs'
 
 export default function DefaultHeader() {
@@ -53,10 +53,10 @@ export default function DefaultHeader() {
             <>
               <div className="flex items-center justify-between p-6 md:justify-start md:space-x-10">
                 <div className="flex justify-start lg:w-0 lg:flex-1">
-                  <LogoHorizontalLinkToHome className="h-8 w-auto sm:h-10" />
+                  <LogoHorizontalLink className="h-8 w-auto sm:h-10" />
                 </div>
                 <div className="-my-2 -mr-2 md:hidden">
-                  <Popover.Button className="inline-flex items-center justify-center rounded bg-yellow-50 p-2 text-gray-700 hover:bg-amber-50 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-500 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-200">
+                  <Popover.Button className="inline-flex items-center justify-center rounded bg-yellow-50 p-2 text-gray-700 hover:bg-amber-50 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-200">
                     <span className="sr-only">{t('common:openMenu')}</span>
                     <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                   </Popover.Button>
@@ -96,13 +96,13 @@ export default function DefaultHeader() {
                     <div className="px-5 pt-5">
                       <div className="flex items-center justify-between">
                         <div>
-                          <LogoHorizontalLinkToHome
+                          <LogoHorizontalLink
                             className="h-8 w-auto sm:h-10"
                             onClick={() => close()}
                           />
                         </div>
                         <div className="-mr-2">
-                          <Popover.Button className="inline-flex items-center justify-center rounded bg-yellow-50 p-2 text-gray-700 hover:bg-amber-50 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-500 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-200">
+                          <Popover.Button className="inline-flex items-center justify-center rounded bg-yellow-50 p-2 text-gray-700 hover:bg-amber-50 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-200">
                             <span className="sr-only">
                               {t('common:closeMenu')}
                             </span>
@@ -123,7 +123,7 @@ export default function DefaultHeader() {
                             {t(nav.name)}
                           </Link>
                         ))}
-                        <div className="flex flex-1 items-center justify-end ">
+                        <div className="flex flex-1 items-center justify-end">
                           <LanguageChanger />
                           <div className="ml-4">
                             <ColorModeChanger />
