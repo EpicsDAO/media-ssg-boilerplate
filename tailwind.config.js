@@ -141,11 +141,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: [
-          'var(--font-fredoka)',
-          'M PLUS Rounded 1c',
-          ...fontFamily.sans,
-        ],
+        sans: ['Fredoka', 'M PLUS Rounded 1c', ...fontFamily.sans],
       },
     },
   },

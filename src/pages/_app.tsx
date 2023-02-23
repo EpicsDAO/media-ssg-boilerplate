@@ -8,13 +8,7 @@ import Head from 'next/head'
 import type { SeoData } from '@/lib/getStatic'
 import 'highlight.js/styles/github-dark.css'
 import '@/assets/styles/globals.css'
-import { Fredoka } from '@next/font/google'
 import { ThemeProvider } from 'next-themes'
-
-const fredoka = Fredoka({
-  subsets: ['latin'],
-  variable: '--font-fredoka',
-})
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -35,9 +29,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       </Head>
       <RecoilRoot>
         <ThemeProvider attribute="class">
-          <main
-            className={`${fredoka.variable} min-h-screen scroll-smooth font-sans antialiased`}
-          >
+          <main className="min-h-screen scroll-smooth font-sans antialiased">
             <Layout
               Component={Component}
               pageProps={pageProps}
