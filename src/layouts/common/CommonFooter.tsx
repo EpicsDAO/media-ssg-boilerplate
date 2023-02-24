@@ -36,7 +36,7 @@ export default function CommonFooter() {
                 <a
                   href={`https://twitter.com/${siteConfig.twitterAccount}`}
                   className="group"
-                  aria-label="Epics DAO on Twitter"
+                  aria-label="Twitter"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -50,7 +50,7 @@ export default function CommonFooter() {
                 <a
                   href={`https://github.com/${siteConfig.githubAccount}`}
                   className="group"
-                  aria-label="Epics on GitHub"
+                  aria-label="GitHub"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -64,7 +64,7 @@ export default function CommonFooter() {
                 <a
                   href={`${siteConfig.discordInvitationLink}`}
                   className="group text-gray-500 hover:text-gray-700"
-                  aria-label="Epics Discord  Server"
+                  aria-label="Discord Server Invitation"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -78,7 +78,7 @@ export default function CommonFooter() {
                 <a
                   href={`https://instagram.com/${siteConfig.instagramAccount}`}
                   className="group text-gray-500 hover:text-gray-700"
-                  aria-label="Epics Instagram"
+                  aria-label="Instagram"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -91,7 +91,8 @@ export default function CommonFooter() {
                 </a>
               </div>
               <p className="mt-6 text-sm text-gray-500 sm:mt-0">
-                &copy; {new Date().getFullYear()} Epics DAO All rights reserved.
+                &copy; {new Date().getFullYear()} {siteConfig.copyright} All
+                rights reserved.
               </p>
             </div>
           </Container>
