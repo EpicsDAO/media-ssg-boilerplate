@@ -1,7 +1,9 @@
 {
   "name": "media-ssg-boilerplate",
   "version": "1.0.0",
-  "private": true,
+  "author": {
+    "name": "KishiTheMechanic"
+  },
   "scripts": {
     "prepare": "husky install",
     "pre-commit": "run-p 'pre-commit:*'",
