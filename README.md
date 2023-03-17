@@ -2,6 +2,18 @@
 
 ![Media SSG Boilerplate](https://user-images.githubusercontent.com/20677823/221048865-464e2d08-fd7c-4e64-a590-ba7d21b77173.png)
 
+This repo is now deprecated.
+
+# Moved to Skeet
+
+![Skeet Web Template](https://storage.googleapis.com/skeet-assets/imgs/samples/skeet-web-template.png)
+
+We made the TypeScript Full stack framework "Skeet" and now maintaining the Media SSG Templates(Skeet Web Template) codes there. We can make APIs, Workers, Apps and Web media with "Skeet"
+
+[Skeet Web Template](https://github.com/elsoul/skeet-web-template)
+
+[Skeet - TypeScript Serverless Framework](https://github.com/elsoul/skeet)
+
 ## Aiming to
 
 - Fast Development
